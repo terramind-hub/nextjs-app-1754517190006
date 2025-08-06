@@ -4,5 +4,3 @@ export interface Todo {
   completed: boolean
   createdAt: Date
 }
-
-export type TodoStatus = 'all' | 'active' | 'completed'

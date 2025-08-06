@@ -1,8 +1,3 @@
-/**
- * Format a date to a human-readable string
- * @param date - The date to format
- * @returns Formatted date string
- */
 export function formatDate(date: Date): string {
   const now = new Date()
   const diffInMs = now.getTime() - date.getTime()
@@ -27,31 +22,23 @@ export function formatDate(date: Date): string {
   }
 }
 
-/**
- * Check if a date is today
- * @param date - The date to check
- * @returns True if the date is today
- */
-export function isToday(date: Date): boolean {
-  const today = new Date()
-  return (
-    date.getDate() === today.getDate() &&
-    date.getMonth() === today.getMonth() &&
-    date.getFullYear() === today.getFullYear()
-  )
+export function formatDateTime(date: Date): string {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  })
 }
 
-/**
- * Check if a date is yesterday
- * @param date - The date to check
- * @returns True if the date is yesterday
- */
+export function isToday(date: Date): boolean {
+  const today = new Date()
+  return date.toDateString() === today.toDateString()
+}
+
 export function isYesterday(date: Date): boolean {
   const yesterday = new Date()
   yesterday.setDate(yesterday.getDate() - 1)
-  return (
-    date.getDate() === yesterday.getDate() &&
-    date.getMonth() === yesterday.getMonth() &&
-    date.getFullYear() === yesterday.getFullYear()
-  )
+  return date.toDateString() === yesterday.toDateString()
 }
